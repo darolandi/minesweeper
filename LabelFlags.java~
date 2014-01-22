@@ -1,0 +1,34 @@
+import java.awt.*;
+import javax.swing.*;
+
+/**
+ * Displays the number of Flags in the game.
+ * 
+ * @author Daniel Rolandi
+ * @version 4/25/2013
+ */
+public class LabelFlags extends JLabel implements GameViewer{
+  private GameBoard gameBoard;  
+  
+  /**
+   * Connects the Label with the GameBoard.
+   * @param gb Data center.
+   * @throws IllegalArgumentException If supplied GameBoard is null.
+   */
+  public LabelFlags(GameBoard gb){ 
+    if(gb == null){
+      throw new IllegalArgumentException("Expected game board.");
+    }
+    gameBoard = gb;
+    
+    setHorizontalAlignment(SwingConstants.CENTER);
+    setText("<html>Flags<br />" + gameBoard.getTotalFlagsCount() + "</html>");    
+  }
+  
+  /** Updates label. */
+  @Override
+  public void update(){   
+    setText("<html>Flags<br />" + gameBoard.getTotalFlagsCount() + "</html>");
+  }
+  
+}
